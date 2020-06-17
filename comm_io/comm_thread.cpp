@@ -8,7 +8,7 @@
 namespace driver_comm
 {
 
-void comm_thread(const void *arg)
+void comm_thread(void)
 {
     CommIo comm_io;
     thread_util::QueueReader<struct comm_frame_t> comm_order("comm_send");
@@ -38,7 +38,7 @@ void comm_thread(const void *arg)
     }
 }
 
-void sensor_thread(const void *arg)
+void sensor_thread(void)
 {
     thread_util::QueueReader<struct comm_frame_t> comm_readraw("comm_readraw");
 
@@ -60,6 +60,9 @@ void sensor_thread(const void *arg)
 
 void comm_io_start(void)
 {
+    thread_util::Launcher comm_launch(comm_thread);
+
+    thread_util::Launcher sensor_launch(sensor_thread);
 }
 
 }
