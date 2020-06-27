@@ -2,7 +2,7 @@
 #define COMM_DEVICE_SWITCH_HPP
 
 #include "comm_io/comm_io.hpp"
-#include "thread-util/threadutil_queue.hpp"
+#include "thread_util/threadutil_queue.hpp"
 
 namespace comm_device
 {

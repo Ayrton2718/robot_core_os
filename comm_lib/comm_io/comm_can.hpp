@@ -2,7 +2,7 @@
 #define COMM_IO_COMM_CAN_HPP
 
 #include <stdio.h>
-
+#include "comm_type.hpp"
 
 namespace comm_io
 {

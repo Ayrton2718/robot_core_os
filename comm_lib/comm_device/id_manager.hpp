@@ -2,7 +2,7 @@
 #define COMM_DEVICE_ID_MANAGER_HPP
 
 #include "comm_io.hpp"
-#include "../thread-util/threadutil.hpp"
+#include "../thread_util/threadutil.hpp"
 
 #include <string>
 

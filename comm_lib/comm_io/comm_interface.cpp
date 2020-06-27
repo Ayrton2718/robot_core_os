@@ -4,7 +4,7 @@ namespace comm_io
 {
 
 thread_util::locker                      CommReader::m_locker;
-struct read_data_t*                      CommReader::m_data_lib[64];
+CommReader::read_data_t*                 CommReader::m_data_lib[64];
 
 CommReader::CommReader(void)
 {
@@ -21,7 +21,7 @@ void CommReader::set_data(size_t id, const uint8_t* data_buff, uint8_t data_len)
     m_locker.lock();
     if(m_data_lib[id] == NULL)
     {
-        m_data_lib[id] = (struct read_data_t*)malloc(sizeof(struct read_data_t));
+        m_data_lib[id] = (read_data_t*)malloc(sizeof(read_data_t));
     }
 
     m_data_lib[id]->hash_counter++;

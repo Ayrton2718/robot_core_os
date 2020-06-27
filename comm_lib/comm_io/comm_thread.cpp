@@ -1,6 +1,6 @@
 #include "comm_thread.hpp"
 
-#include "../thread-util/threadutil.hpp"
+#include "../thread_util/threadutil.hpp"
 #include "comm_type.hpp"
 #include "comm_can.hpp"
 #include "comm_interface.hpp"
