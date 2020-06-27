@@ -1,16 +1,16 @@
 #include "comm_thread.hpp"
 
 #include "../thread-util/threadutil.hpp"
-#include "comm_io.hpp"
-#include "id_manager.hpp"
+#include "comm_type.hpp"
+#include "comm_can.hpp"
 #include "comm_interface.hpp"
 
-namespace driver_comm
+namespace comm_io
 {
 
 void comm_thread(void)
 {
-    CommIo comm_io;
+    CommCan comm_io;
     thread_util::QueueReader<struct comm_frame_t> comm_order("comm_send");
     thread_util::QueueSetter<struct comm_frame_t> comm_readraw("comm_readraw");
 
@@ -19,8 +19,10 @@ void comm_thread(void)
         if(0 < comm_order.size())
         {
             struct comm_frame_t send_frame = comm_order.poll();
-
-            comm_io.send(&send_frame);
+            if(send_frame.id != CAN_UNKNOWN_ID)
+            {
+                comm_io.send(&send_frame);
+            }
         }
 
         struct comm_frame_t rec_frame;

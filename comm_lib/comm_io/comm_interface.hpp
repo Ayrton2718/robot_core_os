@@ -1,12 +1,12 @@
-#ifndef COMM_INTERFACE_HPP
-#define COMM_INTERFACE_HPP
+#ifndef COMM_IO_COMM_INTERFACE_HPP
+#define COMM_IO_COMM_INTERFACE_HPP
 
 #include "comm_io.hpp"
 
 #include "../thread-util/threadutil.hpp"
 #include "stdint.h"
 
-namespace driver_comm
+namespace comm_io
 {
 
 struct read_data_t
@@ -26,13 +26,13 @@ public:
     CommReader(void);
     static void initializer(void);
 
-    void set_data(size_t id, const uint8_t* data_buff, uint8_t data_len);
+    static void set_data(size_t id, const uint8_t* data_buff, uint8_t data_len);
 
-    uint8_t get_data(size_t id, uint8_t* data_buff);
+    static uint8_t get_data(size_t id, uint8_t* data_buff);
 
-    uint8_t get_hash_counter(size_t id);
+    static uint8_t get_hash_counter(size_t id);
 };
 
 }
 
-#endif /*COMM_INTERFACE_HPP*/
+#endif /*COMM_IO_COMM_INTERFACE_HPP*/
